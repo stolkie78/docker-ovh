@@ -10,6 +10,7 @@ services:
     volumes:
       - ./conf/ga-sporten.nl.conf:/etc/nginx/conf.d/ga-sporten.nl.conf
       - ./conf/ygos.nl.conf:/etc/nginx/conf.d/ygos.nl.conf
+      - ./conf/victorybeach.nl.conf:/etc/nginx/conf.d/victorybeach.nl.conf
       - ./certs:/etc/letsencrypt
       - ./html:/usr/share/nginx/html
     depends_on:

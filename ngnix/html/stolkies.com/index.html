@@ -4,97 +4,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Minimalist Cat Countdown">
-    <title>Cat Countdown</title>
+    <title>Dropdown Hamburger Menu</title>
     <style>
-        body {
+        /* Basisopmaak */
+        body,
+        html {
             margin: 0;
             padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            background-color: #f5f5f5;
+            overflow-x: hidden;
             font-family: Arial, sans-serif;
-            color: #333;
+            background-color: #ffff09;
+            /* Achtergrondkleur */
+            color: black;
+            /* Standaard tekstkleur */
         }
 
-        h1 {
+        section {
+            height: 100vh;
+            /* Elke sectie vult het hele scherm */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
             font-size: 2rem;
-            margin-bottom: 20px;
+            color: black;
+            /* Kleur van de sectieteksten */
         }
 
-        iframe {
-            width: 560px;
-            height: 315px;
-            border: none;
-            margin-bottom: 20px;
+        /* Fixed banner */
+        .banner {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: black;
+            /* Banner achtergrond */
+            color: white;
+            /* Banner tekstkleur */
+            text-align: center;
+            padding: 10px 0;
+            font-weight: bold;
+            z-index: 10;
         }
 
-        .countdown {
-            font-size: 1.5rem;
-            color: #555;
+        /* Hamburger menu */
+        .hamburger-menu {
+            position: fixed;
+            top: 10px;
+            left: 20px;
+            z-index: 11;
+            cursor: pointer;
+            background: white;
+            /* Achtergrond van de hamburger */
+            color: black;
+            padding: 10px 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
         }
 
-        @media (max-width: 600px) {
-            iframe {
-                width: 100%;
-                height: auto;
-            }
+        .hamburger-menu div {
+            width: 25px;
+            height: 3px;
+            background: black;
+            /* Hamburger lijnen in zwart */
+            margin: 5px 0;
+        }
 
-            h1 {
-                font-size: 1.5rem;
-            }
+        /* Dropdown menu */
+        .dropdown-menu {
+            position: fixed;
+            top: 50px;
+            left: 20px;
+            background: white;
+            /* Menu achtergrond */
+            width: 200px;
+            display: none;
+            flex-direction: column;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
 
-            .countdown {
-                font-size: 1.2rem;
-            }
+        .dropdown-menu.open {
+            display: flex;
+        }
+
+        .dropdown-menu a {
+            text-decoration: none;
+            color: black;
+            /* Menu link kleur */
+            padding: 10px;
+            font-size: 1.2rem;
+            border-bottom: 1px solid #ccc;
+            /* Grijze scheidingslijnen */
+        }
+
+        .dropdown-menu a:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-menu a:hover {
+            background: #ffff09;
+            /* Gele hover-achtergrond */
+            color: black;
+            /* Tekst blijft zwart */
         }
     </style>
 </head>
 
 <body>
-    <h1>Welcome to Cat Countdown</h1>
-    <iframe id="catVideo" src="" allowfullscreen></iframe>
-    <div class="countdown" id="countdown">Loading...</div>
+
+    <!-- Fixed Banner -->
+    <div class="banner">
+        <h1>Mijn Website</h1>
+    </div>
+
+    <!-- Hamburger Menu -->
+    <div class="hamburger-menu" onclick="toggleDropdown()">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+    <!-- Dropdown Menu -->
+    <div class="dropdown-menu" id="dropdownMenu">
+        <a href="#section1">Home</a>
+        <a href="#section2">Over</a>
+        <a href="#section3">Diensten</a>
+        <a href="#section4">Contact</a>
+    </div>
+
+    <!-- Secties -->
+    <section id="section1">
+        <h2>Welkom op onze website!</h2>
+    </section>
+    <section id="section2">
+        <h2>Over ons</h2>
+    </section>
+    <section id="section3">
+        <h2>Onze diensten</h2>
+    </section>
+    <section id="section4">
+        <h2>Contacteer ons</h2>
+    </section>
 
     <script>
-        // List of random cat videos
-        const catVideos = [
-            "https://www.youtube.com/embed/J---aiyznGQ", // Popular cat video
-            "https://www.youtube.com/embed/2g811Eo7K8U", // Funny cat video
-            "https://www.youtube.com/embed/tntOCGkgt98", // Cat meowing
-            "https://www.youtube.com/embed/5dsGWM5XGdg", // Cats being hilarious
-            "https://www.youtube.com/embed/SiYHVBs-KcQ"  // Sleepy cats
-        ];
-
-        // Set a random cat video
-        const randomVideo = catVideos[Math.floor(Math.random() * catVideos.length)];
-        document.getElementById("catVideo").src = randomVideo;
-
-        // Countdown Timer
-        function updateCountdown() {
-            const targetDate = new Date(new Date().getFullYear() + 1, 0, 1); // Midnight on January 1
-            const now = new Date();
-            const timeLeft = targetDate - now;
-
-            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-
-            const countdownElement = document.getElementById("countdown");
-            countdownElement.textContent = `Time until New Year: ${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds`;
-
-            if (timeLeft <= 0) {
-                countdownElement.textContent = "🎉 Happy New Year! 🎊";
-            }
+        // Functie om het dropdown-menu te openen/sluiten
+        function toggleDropdown() {
+            const menu = document.getElementById('dropdownMenu');
+            menu.classList.toggle('open');
         }
-
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
     </script>
+
 </body>
 
 </html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Minimalist Cat Countdown">
+    <title>Cat Countdown</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: #f5f5f5;
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        iframe {
+            width: 560px;
+            height: 315px;
+            border: none;
+            margin-bottom: 20px;
+        }
+
+        .countdown {
+            font-size: 1.5rem;
+            color: #555;
+        }
+
+        @media (max-width: 600px) {
+            iframe {
+                width: 100%;
+                height: auto;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .countdown {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Welcome to Cat Countdown</h1>
+    <iframe id="catVideo" src="" allowfullscreen></iframe>
+    <div class="countdown" id="countdown">Loading...</div>
+
+    <script>
+        // List of random cat videos
+        const catVideos = [
+            "https://www.youtube.com/embed/J---aiyznGQ", // Popular cat video
+            "https://www.youtube.com/embed/2g811Eo7K8U", // Funny cat video
+            "https://www.youtube.com/embed/tntOCGkgt98", // Cat meowing
+            "https://www.youtube.com/embed/5dsGWM5XGdg", // Cats being hilarious
+            "https://www.youtube.com/embed/SiYHVBs-KcQ"  // Sleepy cats
+        ];
+
+        // Set a random cat video
+        const randomVideo = catVideos[Math.floor(Math.random() * catVideos.length)];
+        document.getElementById("catVideo").src = randomVideo;
+
+        // Countdown Timer
+        function updateCountdown() {
+            const targetDate = new Date(new Date().getFullYear() + 1, 0, 1); // Midnight on January 1
+            const now = new Date();
+            const timeLeft = targetDate - now;
+
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            const countdownElement = document.getElementById("countdown");
+            countdownElement.textContent = `Time until New Year: ${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds`;
+
+            if (timeLeft <= 0) {
+                countdownElement.textContent = "🎉 Happy New Year! 🎊";
+            }
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+
+</html>

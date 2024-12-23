@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Next Page Button</title>
+    <style>
+        /* Basisopmaak */
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            font-family: Arial, sans-serif;
+            background-color: #ffff09;
+            /* Achtergrondkleur */
+            color: black;
+            /* Standaard tekstkleur */
+            scroll-behavior: smooth;
+            /* Vloeiend scrollen */
+        }
+
+        section {
+            height: 100vh;
+            /* Elke sectie vult het hele scherm */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 2rem;
+            color: black;
+            /* Kleur van de sectieteksten */
+        }
+
+        /* Fixed banner */
+        .banner {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: black;
+            /* Banner achtergrond */
+            color: white;
+            /* Banner tekstkleur */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 0;
+            z-index: 10;
+        }
+
+        .banner img {
+            width: 600px;
+            /* Breedte van het logo */
+            max-width: 100%;
+            /* Zorgt ervoor dat het responsief blijft */
+            height: auto;
+            /* Houdt de aspect ratio intact */
+        }
+
+        /* Next Page Button */
+        .next-page-btn {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: black;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            z-index: 10;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .next-page-btn:hover {
+            background: #fff;
+            color: black;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Fixed Banner -->
+    <div class="banner">
+        <img src="images/Vibes-logo.png" alt="Vibes Logo">
+    </div>
+
+    <!-- Secties -->
+    <section id="section1">
+        <h2>Welkom op onze website!</h2>
+    </section>
+    <section id="section2">
+        <h2>Over ons</h2>
+    </section>
+    <section id="section3">
+        <h2>Onze diensten</h2>
+    </section>
+    <section id="section4">
+        <h2>Contacteer ons</h2>
+    </section>
+
+    <!-- Next Page Button -->
+    <button class="next-page-btn" onclick="goToNextSection()">Next Page</button>
+
+    <script>
+        // Variabele voor de huidige sectie-index
+        let currentIndex = 0;
+
+        // Functie om naar de volgende sectie te scrollen
+        function goToNextSection() {
+            const sections = document.querySelectorAll('section'); // Alle secties ophalen
+            currentIndex = (currentIndex + 1) % sections.length; // Volgende index, circulair
+            sections[currentIndex].scrollIntoView({ behavior: 'smooth' }); // Scroll naar de sectie
+        }
+    </script>
+
+</body>
+
+</html>

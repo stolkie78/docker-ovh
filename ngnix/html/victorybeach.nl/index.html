@@ -1,47 +1,25 @@
 <!DOCTYPE html>
+<html lang ```html <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Next Page Button with Bottom Bar</title>
+    <title>Banner with Icons</title>
     <style>
         /* Basisopmaak */
+        @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+    
         body,
         html {
             margin: 0;
             padding: 0;
             overflow-x: hidden;
-            font-family: Arial, sans-serif;
+            font-family: 'Lato', sans-serif;
+            font-size: 12;
             background-color: #ffff09;
-            /* Achtergrondkleur */
-            color: black;
-            /* Standaard tekstkleur */
             scroll-behavior: smooth;
-            /* Vloeiend scrollen */
-        }
 
-        section {
-            height: calc(100vh - 30px);
-            /* Hoogte van sectie, rekening houdend met de zwarte balk */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            font-size: 2rem;
-            color: black;
-            /* Kleur van de sectieteksten */
-            position: relative;
-        }
-
-        /* Zwarte balk onderaan */
-        .bottom-bar {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            height: 10px;
-            background-color: black;
-            /* Kleur van de balk */
         }
 
         /* Fixed banner */
@@ -50,44 +28,87 @@
             top: 0;
             width: 100%;
             background: black;
-            /* Banner achtergrond */
             color: white;
-            /* Banner tekstkleur */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px 5px;
+            z-index: 10;
+        }
+
+        .banner img.logo {
+            width: 300px;
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .banner-icons {
             display: flex;
             justify-content: center;
-            align-items: center;
-            padding: 10px 0;
-            z-index: 10;
+            gap: 15px;
         }
 
-        .banner img {
-            width: 600px;
-            /* Breedte van het logo */
-            max-width: 100%;
-            /* Zorgt ervoor dat het responsief blijft */
-            height: auto;
-            /* Houdt de aspect ratio intact */
-        }
-
-        /* Next Page Icon */
-        .next-page-icon {
-            position: fixed;
-            bottom: 50px;
-            /* Plaatsing boven de zwarte balk */
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 100px;
+        .banner-icons img {
+            width: 40px;
+            height: 40px;
             cursor: pointer;
-            z-index: 10;
+        }
+
+        .banner-icons img:hover {
+            opacity: 0.8;
+        }
+
+        /* Secties */
+        section {
+            min-height: calc(100vh - 70px);
+            padding: 90px 20px 20px;
+            padding-top: 140px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        section>div {
+            max-width: 800px;
+            width: 100%;
+            margin: auto;
+        }
+
+        /* Tabel stijl */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-family: Arial, sans-serif;
+            font-size: 0.9rem;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: black;
+            color: white;
+        }
+
+        caption {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
         }
 
         /* Contactformulier */
         .form-container {
-            text-align: left;
-            max-width: 500px;
-            width: 100%;
-            margin: auto;
+            text-align: center;
+            margin: 20px 0;
         }
 
         .form-container label {
@@ -100,6 +121,7 @@
         .form-container textarea,
         .form-container button {
             width: 100%;
+            max-width: 500px;
             padding: 10px;
             margin-bottom: 15px;
             border: 1px solid black;
@@ -123,21 +145,32 @@
             border: 1px solid black;
         }
 
-        /* Styling voor tekst (h2 en p) */
-        section div {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        /* Next Page Icon */
+        .next-page-icon {
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+            z-index: 10;
         }
 
-        section h2 {
-            margin-bottom: 10px;
-            font-size: 2rem;
-        }
+        /* Media Queries voor responsiviteit */
+        @media (max-width: 768px) {
+            .banner img.logo {
+                width: 200px;
+            }
 
-        section p {
-            font-size: 1.5rem;
-            margin: 0;
+            .banner-icons img {
+                width: 30px;
+                height: 30px;
+            }
+
+            section>div {
+                margin: auto;
+            }
         }
     </style>
 </head>
@@ -146,31 +179,71 @@
 
     <!-- Fixed Banner -->
     <div class="banner">
-        <img src="images/Vibes-logo.png" alt="Vibes Logo">
+        <img src="images/Vibes-logo.png" alt="Vibes Logo" class="logo">
+        <div class="banner-icons">
+            <img src="images/FBIcon.png" alt="Icon 1">
+            <img src="images/InstaIcon.png" alt="Icon 2">
+            <img src="images/WAIcon.png" alt="Icon 3">
+            <img src="images/MailIcon.png" alt="Icon 4">
+        </div>
     </div>
 
     <!-- Secties -->
-    <section id="section1">
-        <h1>Welkom op onze website!</h1>
-        <div class="bottom-bar"></div>
-    </section>
-    <section id="section2">
+<section id="home">
+    <div>
+        <h1>Welkom bij ViBes</h1> <br>
+          <h3><b><i>Dé Beachvolleybal Community van Regio Den Haag</b></i></h3>
+        <p>
+            Bij ViBes draait alles om passie, ambitie en plezier. Vanuit onze thuisbasis, de prachtige velden van Zovoc
+            Beach,
+            brengen we jonge talenten en beachvolleyballiefhebbers samen om de sport naar een hoger niveau te tillen.
+            Of je nu een gedreven speler bent met grote dromen of een jonge trainer die zijn vaardigheden wil
+            ontwikkelen:
+            ViBes is dé plek waar je kunt groeien en excelleren.
+        </p>
+
+        <h3>Waarom kiezen voor ViBes?</h3>
+        <p>
+            ViBes biedt ambitieuze spelers de kans om hun doelen te bereiken met trainingen en competities die verder
+            gaan
+            dan recreatief volleyballen. Onder begeleiding van experts zoals Victor Anfiloff en Giedo Stolk krijg je de
+            kans
+            om jezelf te ontwikkelen in een professionele omgeving. Daarnaast investeren we in de toekomst door jonge
+            trainers
+            op te leiden, waarmee we bouwen aan een sterke beachvolleybalcommunity in de Haagse regio.
+        </p>
+        <p>
+            Bij ViBes staat plezier in de sport centraal. Het draait niet alleen om winst, maar om genieten van het spel, samen
+            groeien
+            en het versterken van onze community. Samen tillen we beachvolleybal naar een hoger niveau.
+        </p>
+
+        <h3>Wat biedt ViBes?</h3>
+        <p>
+            Serieuze trainingen voor jonge spelers en speelsters met ambitie, deelname aan uitdagende toernooien en
+            evenementen,
+            en unieke kansen om als trainer in opleiding anderen te inspireren. Bij ViBes gaan plezier en prestaties
+            hand in hand
+            binnen een hechte, motiverende community.
+        </p>
+
+        <h3>Sluit je aan bij ViBes</h3>
+        <p>
+            Word deel van onze inspirerende community en ervaar de energie van beachvolleybal op zijn best. Train op de
+            velden
+            van Zovoc Beach en ontdek hoe ViBes jou kan helpen jouw sportieve ambities waar te maken.
+        </p>
+        <p>
+            Samen creëren we de toekomst van beachvolleybal in Zoetermeer. Schrijf je vandaag nog in en ontdek jouw
+            potentieel
+            bij ViBes!
+        </p>
+    </div>
+</section>
+
+    <section id="inschrijven">
         <div>
-            <h1>About</h1>
-            <p>What we are!</p>
-        </div>
-        <div class="bottom-bar"></div>
-    </section>
-    <section id="section3">
-        <div>
-            <h1>Onze diensten</h1>
-            <p>What we do</p>
-        </div>
-        <div class="bottom-bar"></div>
-    </section>
-    <section id="section4">
-        <div>
-            <h1>Contact</h1>
+            <h2>Inschrijven</h2>
             <div class="form-container">
                 <form id="contactForm" action="/api/contact" method="POST">
                     <label for="name">Naam:</label>
@@ -186,44 +259,202 @@
                 </form>
             </div>
         </div>
-        <div class="bottom-bar"></div>
     </section>
 
-    <!-- Next Page Icon -->
+<section id="over">
+    <div>
+        <h2>ViBes Beachvolleybal Community</h2>
+        <p>
+            Victor Anfiloff is de oprichter van ViBes en de drijvende kracht achter de organisatie. Samen met Giedo
+            Stolk heeft hij
+            een platform gecreëerd dat jonge beachvolleyballers met ambitie helpt om hun talenten te ontwikkelen. Onder
+            de vlag
+            van Stichting SportF3 zet ViBes zich in voor de promotie van beachvolleybal en het opleiden van zowel
+            spelers als
+            jonge trainers, met de prachtige velden van Zovoc Beach als thuisbasis.
+        </p>
+        <p>
+            Victor Anfiloff brengt zijn jarenlange internationale ervaring en technische kennis naar ViBes, met een
+            sterke focus
+            op het bouwen van complete atleten. Zijn passie voor de sport en oog voor detail inspireren spelers en
+            trainers om het
+            beste uit zichzelf te halen.
+        </p>
+        <p>
+            Giedo Stolk, ervaren trainer en speler, voegt een persoonlijke en motiverende aanpak toe. Hij herkent jong
+            talent en weet
+            hen te enthousiasmeren om met plezier en ambitie te groeien. Samen vormen zij de perfecte combinatie om een
+            duurzame
+            toekomst voor beachvolleybal in Zoetermeer te realiseren.
+        </p>
+
+        <h3>ViBes: Passie, Ambitie en Educatie</h3>
+        <p>
+            ViBes opereert onder Stichting SportF3, een non-profitorganisatie zonder winstoogmerk. Onze missie is
+            helder: het promoten
+            van beachvolleybal en het bieden van kansen aan jonge talenten om hun sportieve dromen te realiseren.
+        </p>
+
+        <h3>Onze Missie: Een Toekomst Bouwen</h3>
+        <p>
+            Bij ViBes geloven we in een duurzame aanpak. We richten ons niet alleen op het begeleiden van ambitieuze
+            spelers, maar
+            ook op het opleiden van jonge trainers die de volgende generatie kunnen inspireren. Het plezier in de sport
+            staat centraal,
+            waardoor we een hechte en sterke community opbouwen die bijdraagt aan een toekomstvaste sportomgeving.
+        </p>
+        <p>
+            ViBes is opgericht door experts met een duidelijke visie. Victor Anfiloff’s ervaring en passie voor de sport
+            vormen de
+            basis voor professionele en persoonlijke groei. Tegelijkertijd ondersteunen we spelers met uitdagende
+            programma’s die hen
+            helpen hun doelen te bereiken. Ook geven we jonge trainers de tools om hun kennis en enthousiasme door te
+            geven, wat zorgt
+            voor een blijvende impact op de sport.
+        </p>
+
+        <h3>Doe Mee: Maak Deel Uit van de ViBes-Community!</h3>
+        <p>
+            ViBes is dé plek waar talent, ambitie en plezier samenkomen. Of je nu een jonge speler bent met grote dromen
+            of een trainer
+            in de dop die het verschil wil maken, bij ViBes krijg je de kans om te groeien en een impact te maken.
+        </p>
+        <p>
+            Sluit je aan bij onze missie en ontdek jouw potentieel op de velden van Zovoc Beach. Samen bouwen we aan een
+            sterke,
+            toekomstvaste beachvolleybalcommunity in Zoetermeer!
+        </p>
+    </div>
+</section>
+
+<section id="info">
+    <div>
+        <h2>Info</h2>
+        <p>Hieronder vind je een overzicht van onze trainingsgroepen en beschikbare tijden:</p>
+
+        <h3>Toelatingseisen</h3>
+        <p>
+            Om toegelaten te worden tot ViBes vragen we:
+            - Een goede motivatie en ambitie.
+            - Deelname aan het Nederlands Open Jeugd Kampioenschap (NOJK).
+            - Deelname aan een aantal beachvolleybaltoernooien.
+        </p>
+
+        <h3>Selectie</h3>
+        <p>
+            Bij ViBes werken we op basis van selectie om ervoor te zorgen dat elke speler in de juiste groep traint en
+            zich optimaal kan ontwikkelen.
+            Indien nodig kan een selectietraining worden georganiseerd om het niveau en de motivatie van spelers te
+            beoordelen. Neem contact op voor meer informatie.
+        </p>
+
+        <h3>Kosten</h3>
+        <p>
+            De kosten voor deelname aan het ViBes-programma bedragen €185,- per deelnemer. Daarnaast is het mogelijk om
+            een officiële ViBes-hoodie aan te schaffen.
+            De kosten van de hoodie zijn niet inbegrepen in de deelnameprijs en kunnen apart worden aangeschaft.
+        </p>
+
+        <table>
+            <caption>Trainingsgroepen</caption>
+            <thead>
+                <tr>
+                    <th>Categorie</th>
+                    <th>Plekken</th>
+                    <th>Tijden</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Jongens U15</td>
+                    <td>12</td>
+                    <td>Dinsdag en Donderdag 17:00-18:30</td>
+                </tr>
+                <tr>
+                    <td>Meisjes U15</td>
+                    <td>12</td>
+                    <td>Dinsdag en Donderdag 17:00-18:30</td>
+                </tr>
+                <tr>
+                    <td>Jongens U17</td>
+                    <td>12</td>
+                    <td>Dinsdag en Donderdag 18:30-20:00</td>
+                </tr>
+                <tr>
+                    <td>Meisjes U17</td>
+                    <td>12</td>
+                    <td>Dinsdag en Donderdag 18:30-20:00</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Locatie</h3>
+        <p>Zovoc Beach, Buytenparklaan 9, 2717 AX Zoetermeer, Nederland</p>
+        <a href="https://www.google.com/maps/place/Buytenparklaan+9,+2717+AX+Zoetermeer,+Nederland" target="_blank">
+            Bekijk op Google Maps
+        </a>
+        
+        
+        <h3>Weersomstandigheden</h3>
+        <p>
+            Houd er rekening mee dat trainingen niet worden ingehaald bij uitval door slecht weer. We streven ernaar om
+            het maximale uit onze geplande trainingsmomenten te halen,
+            maar omstandigheden zoals regen of storm kunnen invloed hebben op de planning.
+        </p>
+    </div>
+</section>
+</section>
+
+
+<section id="crew">
+    <div>
+        <h2>Ons Team</h2>
+        <p>Maak kennis met de drijvende krachten achter ViBes. Onze trainers en begeleiders hebben een passie voor
+            beachvolleybal en zijn toegewijd aan het helpen van onze community om te groeien en excelleren.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Foto</th>
+                    <th>Introductie</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <img src="images/victor.jpg" alt="Victor Anfiloff"
+                            style="width:100px; height:auto; border-radius:10px;">
+                    </td>
+                    <td>
+                        <strong>Victor Anfiloff</strong><br>
+                        Oprichter en hoofdtrainer van ViBes. Victor brengt jarenlange internationale ervaring mee en is
+                        toegewijd aan het begeleiden van jonge talenten en het opleiden van trainers.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="images/giedo.jpg" alt="Giedo Stolk"
+                            style="width:100px; height:auto; border-radius:10px;">
+                    </td>
+                    <td>
+                        <strong>Giedo Stolk</strong><br>
+                        Ervaren trainer en speler. Giedo herkent jong talent en helpt hen groeien met een persoonlijke
+                        en motiverende aanpak. Hij brengt passie en plezier naar elke training.
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
     <img src="images/NextPageIcon.png" alt="Next Page Icon" class="next-page-icon" onclick="goToNextSection()">
 
     <script>
-        // Variabele voor de huidige sectie-index
         let currentIndex = 0;
 
-        // Functie om naar de volgende sectie te scrollen
         function goToNextSection() {
-            const sections = document.querySelectorAll('section'); // Alle secties ophalen
-            currentIndex = (currentIndex + 1) % sections.length; // Volgende index, circulair
-            sections[currentIndex].scrollIntoView({ behavior: 'smooth' }); // Scroll naar de sectie
+            const sections = document.querySelectorAll('section');
+            currentIndex = (currentIndex + 1) % sections.length;
+            sections[currentIndex].scrollIntoView({ behavior: 'smooth' });
         }
-
-        // Contactformulier verzenden
-        document.getElementById('contactForm').addEventListener('submit', async function (event) {
-            event.preventDefault();
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData.entries());
-
-            try {
-                const response = await fetch('/api/contact', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(data)
-                });
-                if (response.ok) {
-                    alert('Bericht succesvol verzonden! We nemen spoedig contact met u op.');
-                } else {
-                    alert('Er ging iets mis. Probeer het opnieuw.');
-                }
-            } catch (error) {
-                alert('Kan de server niet bereiken. Probeer het later opnieuw.');
-            }
-        });
     </script>
 
 </body>

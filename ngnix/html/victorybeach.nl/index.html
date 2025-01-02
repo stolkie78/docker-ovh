@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ViBes - Beachvolleybal Community</title>
+    <title>ViBeS - Beachvolleybal Community</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
 
@@ -14,7 +14,7 @@
             padding: 0;
             overflow-x: hidden;
             font-family: 'Lato', sans-serif;
-            font-size: clamp(16px, 2vw, 22px); /* Lettertype dat schaalt met het scherm */
+            font-size: clamp(14px, 2vw, 20px); /* Lettertype dat schaalt met het scherm */
             background-color: #ffff09;
             scroll-behavior: smooth;
         }
@@ -91,7 +91,7 @@
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 20px 0;
+            margin: 10px 0;
             font-size: 0.9rem;
         }
 
@@ -111,6 +111,15 @@
             font-size: 1.2rem;
             font-weight: bold;
             margin-bottom: 10px;
+        }
+        /* Kopteksten en paragrafen aanpassen */
+        h1, h2, h3 {
+            margin-bottom: 0px; /* Verkort de ruimte onder de h1 */
+        }
+
+        p {
+            margin-top: 5px; /* Verkort de ruimte boven de p */
+            margin-bottom: 0px; /* Verkort de ruimte onder de p */
         }
 
         .next-page-icon {
@@ -149,14 +158,16 @@
                 position: sticky; /* Header blijft bovenaan tijdens scrollen */
                 top: 0; /* Zorg dat deze bovenaan blijft */
                 background-color: black;
-                color: #ffff09; /* Gele kleur */
+                /* color: #ffff09; /* Gele kleur */
+                color: white; /* Gele kleur */
                 text-align: center;
                 padding: 10px 20px; /* Uniforme padding */
                 font-size: 1.5rem;
-                z-index: 5;
+                z-index: 1;
                 box-sizing: border-box;
                 margin: 0; /* Geen extra marge toevoegen */
                 width: 100%;
+                font-style: italic;
             }
     </style>
 </head>
@@ -174,8 +185,9 @@
 
     <div class="container">
         <section id="welcome">
-            <div class="section-header">Welkom bij ViBeS</div>
+            
             <div>
+                <div class="section-header">Welkom bij ViBeS</div>
                 <p>
                     ViBeS staat voor <b>Vi</b>ctory <b>Be</b>achvolleybal <b>S</b>chool en is de plek voor talentvolle jeugd uit regio Den Haag om
                     beachvolleybal specifieke technieken en tactieken te leren.
@@ -184,7 +196,7 @@
                     De trainingen worden in Zoetermeer gegeven door voormalige Nederlandse Beachvolleybal Bondscoach <u>Victor Anfiloff</u>
                     en <u>Giedo Stolk</u> (en hun assistant trainers).
                 </p>
-                <h3>Waarom kiezen voor ViBes?</h3>
+                <h3><u>Waarom kiezen voor ViBes?</u></h3>
                 <p>
                     ViBeS biedt ambitieuze spelers de kans om hun doelen te bereiken met trainingen en competities die verder
                     gaan dan recreatief volleyballen. Onder begeleiding van experts zoals Victor Anfiloff en Giedo Stolk krijg
@@ -194,12 +206,12 @@
         </section>
 
         <section id="zomer-programma-2025">
-        <div class="section-header">Zomer Programma 2025</div>
         <div>
+        <div class="section-header">Zomer Programma 2025</div>
             <p>
                 Trainings worden gehouden op dinsdag en donderdag avonden vanaf di 13 mei t/m do 17 juli, 2025 (10 weken).
             </p>
-            <h3>Trainingsgroepen</h3>
+            <h3><u>Trainingsgroepen</u></h3>
             <table>
                 <thead>
                     <tr>
@@ -226,44 +238,95 @@
                     </tr>
                 </tbody>
             </table>
-            <h3>Kosten</h3>
+            <h3><u>Kosten</u></h3>
             <p>
                 De kosten zijn: €185 per persoon (10% familie korting voor 2 of meer kinderen).
             </p>
-            <h3>Locatie</h3>
+            <h3><u>Locatie</u></h3>
             <p>
                 Zovoc Beach, Buytenparklaan 9, 2717 AX Zoetermeer, Nederland
             </p>
-            <h3>Overzicht</h3>
+            <h3><u>Overzicht</u></h3>
             <p>
                 Er zijn 24 plekken per leeftijd (12 jongens + 12 meisjes) met maximaal 6 jeugd per veld.
             </p>
         </div>
         </section>
 
+        <section id="info">
+            <div class="section-header">Info</div>
+            <div class="section-content">
+                <h3><u>Toelatingseisen</u></h3>
+                <p>
+                    Om toegelaten te worden tot ViBeS vragen we:
+                </p>
+                    <b>Een goede motivatie en ambitie<br></b>
+                    <b>Deelname aan het Nederlands Open Jeugd Kampioenschap (NOJK)<br></b>
+                    <b>Deelname aan een aantal beachvolleybaltoernooien.</b>
+                </ul>
+        
+                <h3><u>Selectie</u></h3>
+                <p>
+                    Bij ViBes werken we op basis van selectie om ervoor te zorgen dat elke speler in de juiste groep traint en
+                    zich optimaal kan ontwikkelen.
+                    Indien nodig kan een selectietraining worden georganiseerd om het niveau en de motivatie van spelers te
+                    beoordelen.
+                </p>
+        
+                <h3><u>Kosten</u></h3>
+                <p>
+                    De kosten voor deelname aan het ViBeS-programma bedragen €185,- per deelnemer.
+                    Daarnaast is het mogelijk om een officiële ViBeS-hoodie aan te schaffen. De kosten van de hoodie zijn niet
+                    inbegrepen in de deelnameprijs en kunnen apart worden aangeschaft.
+                </p>
+        
+                <h3><u>Weersomstandigheden</u></h3>
+                <p>
+                    Houd er rekening mee dat trainingen niet worden ingehaald bij uitval door slecht weer.
+                    We streven ernaar om het maximale uit onze geplande trainingsmomenten te halen, maar omstandigheden zoals
+                    regen of storm kunnen invloed hebben op de planning.
+                </p>
+                <h3><u>Scolarships</u></h3>
+                <p>
+                    Wij realiseren ons dat talentprogrammas alleen maar duurder worden en dat is zonde. We willen zorgen dat talentvol
+                    kinderen die beperkte middelen hebben ook de kans krijgen om door te stromen naar hun droomdoel en daarom bieden wij
+                    elke zomer twee scholarships aan. Scholarship betekent dat er geen kosten zijn om mee te doen aan onze programma.
+                </p>
+            </div>
+        </section>
+
+
         <section id="onze-missie">
             <div class="section-header">Onze Missie</div>
-            <div>
+            <div class="section-content">
                 <p>
-                    ViBes opereert onder Stichting SportF3, een non-profitorganisatie zonder winstoogmerk. Onze missie
-                    is het promoten van beachvolleybal, het delen van onze kennis, en het bieden van kansen aan jonge
-                    talenten.
+                    ViBes opereert onder Stichting volleyballf3.com, een non-profitorganisatie zonder winstoogmerk. Onze missie
+                    is helder: het promoten van beachvolleybal, het delen van onze beachvolleybal kennis, en het bieden van
+                    kansen aan jonge talenten om hun sportieve dromen te realiseren.<br><br>
                 </p>
-                <h3>Toelatingseisen</h3>
                 <p>
-                    Om toegelaten te worden vragen we:
-                <ul>
-                    <li>Een goede motivatie en ambitie.</li>
-                    <li>Deelname aan het NOJK.</li>
-                    <li>Deelname aan beachvolleybaltoernooien.</li>
-                </ul>
+                    Vanuit onze thuisbasis, de prachtige velden van Zovoc Beach, brengen we jonge talenten en
+                    beachvolleyballiefhebbers samen om de sport naar een hoger niveau te tillen. Of je nu een gedreven speler
+                    bent met grote dromen of een jonge trainer die zijn vaardigheden wil ontwikkelen: ViBeS is dé plek waar je
+                    kunt groeien en excelleren.<br><br>
+                </p>
+                <p>
+                    Daarnaast investeren we in de toekomst door jonge trainers op te leiden, waarmee we bouwen aan een sterke
+                    beachvolleybalcommunity in de Haagse regio. <br><br>
+                </p>
+                <p>
+                    Bij ViBeS staat plezier in de sport centraal. Het draait niet alleen om winst, maar om genieten van het
+                    spel, samen groeien en het versterken van onze community. Samen tillen we beachvolleybal naar een hoger
+                    niveau.
                 </p>
             </div>
         </section>
 
         <section id="ons-team">
             <div class="section-header">Ons Team</div>
-            <div>
+            <div class="section-content">
+                <p>Maak kennis met de drijvende krachten achter ViBeS. Onze trainers en begeleiders hebben een passie voor
+                    beachvolleybal en zijn toegewijd aan het helpen van onze community om te groeien en excelleren.</p>
                 <table>
                     <thead>
                         <tr>
@@ -279,8 +342,13 @@
                             </td>
                             <td>
                                 <strong>Victor Anfiloff</strong><br>
-                                Oprichter en hoofdtrainer van ViBes. Brengt jarenlange ervaring in coaching van
-                                topteams.
+                                Oprichter en hoofdtrainer van ViBeS. Victor is Bondscoach van Beach Team Nederland van 2008 t/m
+                                2021 geweest en heeft veel van Nederlands top beachvolleybal olympiers gecoacht, o.a.
+                                Brouwer/Meeuwsen en Boermans/de Groot.<br><br>
+                                Victor brengt zijn jarenlange internationale ervaring en beachvolleybal technische en tactische
+                                kennis naar ViBeS, met een sterke focus op het bouwen van complete beachvolleybal atleten. Zijn
+                                passie voor de sport en oog voor detail inspireren spelers en trainers om het beste uit zichzelf
+                                te halen.
                             </td>
                         </tr>
                         <tr>
@@ -290,7 +358,10 @@
                             </td>
                             <td>
                                 <strong>Giedo Stolk</strong><br>
-                                Ervaren trainer en speler met een motiverende aanpak.
+                                Ervaren trainer en speler. Giedo voegt een persoonlijke en motiverende aanpak toe. Hij herkent
+                                jong talent en weet hen te enthousiasmeren om met plezier en ambitie te groeien.<br><br>
+                                Samen vormen zij de perfecte combinatie om een duurzame toekomst voor beachvolleybal in
+                                Zoetermeer te realiseren.
                             </td>
                         </tr>
                     </tbody>

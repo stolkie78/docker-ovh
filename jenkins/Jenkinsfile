@@ -4,7 +4,9 @@ pipeline {
     environment {
         GITHUB_REPO = "stolkie78/docker-ovh"
         SITE = "victorybeach.nl"
-        DESTINATION_DIR = "/home/debian/websites/ngnix/html/${SITE}"
+        HTML = "ngnix/html/${SITE}"
+        SOURCE_DIR = "${HTML}"
+        DESTINATION_DIR = "/home/debian/websites/${HTML}"
     }
 
     triggers {
@@ -35,7 +37,7 @@ pipeline {
             steps {
                 echo 'Copying application to destination...'
                 sh '''
-                sudo cp -r * ${DESTINATION_DIR}
+                sudo cp -r ngnix/html/* ${DESTINATION_DIR}
                 sudo chown -R debian:debian ${DESTINATION_DIR}
                 '''
             }

@@ -32,6 +32,9 @@
         *:after {
             box-sizing: inherit;
         }
+        :root {
+            --dynamic-padding-top: 150px; /* Default waarde */
+}
 
         section {
             min-height: 100vh;
@@ -39,12 +42,13 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content top;
             scroll-snap-align: start;
             text-align: center;
             margin: 0 auto; /* Centraal uitlijnen */
             max-width: 100%; 
             padding: 20px;
+            padding-top: 300px;
         }
 
         section>div {
@@ -67,7 +71,7 @@
 
         .banner img.logo {
             width: 50%; /* Laat het logo flexibel zijn, schaal afhankelijk van de container */
-            max-width: 500px; /* Maximale breedte op grote schermen */
+            max-width: 400px; /* Maximale breedte op grote schermen */
             height: auto; /* Houd de verhoudingen intact */
             margin-bottom: 10px;
         }
@@ -79,8 +83,8 @@
         }
 
         .banner-icons img {
-            width: 40px;
-            height: 40px;
+            width: 60px;
+            height: 60px;
             cursor: pointer;
         }
 
@@ -187,6 +191,16 @@
                 background-color: yellow;
                 color: black;
             }
+            .photo {
+                display: block;
+                margin: 20px auto;
+                max-width: 100%;
+                height: auto;
+                max-height: 350px; /* Maximale grootte van 300px */
+                border-radius: 40px;
+                border: 0px solid black;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            }
 
     </style>
 </head>
@@ -214,6 +228,9 @@
                 <p>
                     De trainingen worden in Zoetermeer gegeven door voormalige Nederlandse Beachvolleybal Bondscoach <u>Victor Anfiloff</u>
                     en <u>Giedo Stolk</u> (en hun assistant trainers).
+                </p>
+                <p>
+                    <img src="images/GroupImage1.jpg" alt="Groepsfoto ViBeS" class="photo">
                 </p>
                 <h3><u>Waarom kiezen voor ViBes?</u></h3>
                 <p>
@@ -315,9 +332,8 @@
         </section>
 
         <section id="inschrijven">
-            <div class="section-header">Inschrijven</div>
+            <div class="section-header">Schrijf je nu in!</div>
             <div class="section-content">
-                <h3>Schrijf je nu in!</h3>
                 <p>
                     Wil je meedoen met ViBeS en deel uitmaken van onze inspirerende beachvolleybalcommunity?
                     Neem contact met ons op om je aan te melden. Stuur ons een e-mail door op onderstaande knop te klikken!
@@ -335,6 +351,9 @@
                     is helder: het promoten van beachvolleybal, het delen van onze beachvolleybal kennis, en het bieden van
                     kansen aan jonge talenten om hun sportieve dromen te realiseren.<br><br>
                 </p>
+                 <p>
+                     <img src="images/ActionImage1.jpg" alt="Actie ViBeS" class="photo">
+                 </p>
                 <p>
                     Vanuit onze thuisbasis, de prachtige velden van Zovoc Beach, brengen we jonge talenten en
                     beachvolleyballiefhebbers samen om de sport naar een hoger niveau te tillen. Of je nu een gedreven speler

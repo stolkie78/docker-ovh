@@ -7,6 +7,10 @@ pipeline {
         DESTINATION_DIR = "/home/debian/websites/ngnix/html/${SITE}"
     }
 
+    triggers {
+        pollSCM('* * * * *') // Alternatief als webhooks niet werken
+    }
+
     stages {
         stage('Checkout') {
             steps {

@@ -2,8 +2,8 @@ pipeline {
     agent { label 'victorybeach.nl' }
 
     environment {
-        GITHUB_REPO = "stolkie78/oracle"
-        DESTINATION_DIR = "/home/debian/nginx"
+        GITHUB_REPO = "stolkie78/docker-ovh"
+        DESTINATION_DIR = "/home/debian/websites"
     }
 
     stages {
@@ -31,7 +31,7 @@ pipeline {
                 echo 'Copying application to destination...'
                 sh '''
                 sudo cp -r * ${DESTINATION_DIR}
-                sudo chown -R www-data:www-data ${DESTINATION_DIR}
+                sudo chown -R debian:debian ${DESTINATION_DIR}
                 '''
             }
         }

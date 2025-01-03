@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'vibes' }
+    agent { label 'victorybeach.nl' }
 
     environment {
         GITHUB_REPO = "stolkie78/oracle"

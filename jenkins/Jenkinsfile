@@ -1,0 +1,85 @@
+pipeline {
+    agent any
+
+    environment {
+        GITHUB_REPO = "stolkie78/oracle"
+        APP_NAME = "OracleApp"
+        DEPLOY_ENV = "staging"
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                echo 'Cloning repository...'
+                git url: "https://github.com/${GITHUB_REPO}.git", branch: 'main'
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                echo 'Installing dependencies...'
+                sh '''
+                if [ -f package.json ]; then
+                    npm install
+                else
+                    echo "No package.json found, skipping dependency installation."
+                fi
+                '''
+            }
+        }
+
+        stage('Run Tests') {
+            steps {
+                echo 'Running tests...'
+                sh '''
+                if [ -f package.json ]; then
+                    npm test
+                else
+                    echo "No tests found, skipping test stage."
+                fi
+                '''
+            }
+        }
+
+        stage('Build') {
+            steps {
+                echo 'Building the application...'
+                sh '''
+                if [ -f package.json ]; then
+                    npm run build
+                else
+                    echo "No build script found, skipping build stage."
+                fi
+                '''
+            }
+        }
+
+        stage('Deploy') {
+            when {
+                branch 'main' // Alleen uitvoeren op de hoofdbranch
+            }
+            steps {
+                echo 'Deploying to staging environment...'
+                sh '''
+                echo "Deploying ${APP_NAME} to ${DEPLOY_ENV} environment..."
+                # Voeg je eigen deployment-logica toe, bijvoorbeeld naar een server of cloud
+                '''
+            }
+        }
+    }
+
+    post {
+        always {
+            echo 'Pipeline finished.'
+        }
+        success {
+            echo 'Pipeline succeeded!'
+        }
+        failure {
+            echo 'Pipeline failed.'
+            mail to: 'your_email@example.com',
+                subject: "Pipeline Failed: ${env.JOB_NAME}",
+                body: "Check Jenkins for details: ${env.BUILD_URL}"
+        }
+    }
+}

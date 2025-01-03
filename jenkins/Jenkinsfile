@@ -28,7 +28,7 @@ pipeline {
                 if [ ! -d ${DESTINATION_DIR} ]; then
                     sudo mkdir -p ${DESTINATION_DIR}
                 fi
-                sudo rm -rf ${DESTINATION_DIR}/*
+                sudo rm -rf ${DESTINATION_DIR}/
                 '''
             }
         }

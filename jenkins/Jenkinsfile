@@ -1,68 +1,37 @@
 pipeline {
-    agent any
+    agent { label 'vibes' }
 
     environment {
         GITHUB_REPO = "stolkie78/oracle"
-        APP_NAME = "OracleApp"
-        DEPLOY_ENV = "staging"
+        DESTINATION_DIR = "/home/debian/nginx"
     }
 
     stages {
         stage('Checkout') {
             steps {
                 echo 'Cloning repository...'
-                git url: "https://github.com/${GITHUB_REPO}.git", branch: 'main'
+                checkout scm
             }
         }
 
-        stage('Install Dependencies') {
+        stage('Prepare Destination') {
             steps {
-                echo 'Installing dependencies...'
+                echo 'Preparing destination directory...'
                 sh '''
-                if [ -f package.json ]; then
-                    npm install
-                else
-                    echo "No package.json found, skipping dependency installation."
+                if [ ! -d ${DESTINATION_DIR} ]; then
+                    sudo mkdir -p ${DESTINATION_DIR}
                 fi
+                sudo rm -rf ${DESTINATION_DIR}/*
                 '''
             }
         }
 
-        stage('Run Tests') {
+        stage('Copy Application') {
             steps {
-                echo 'Running tests...'
+                echo 'Copying application to destination...'
                 sh '''
-                if [ -f package.json ]; then
-                    npm test
-                else
-                    echo "No tests found, skipping test stage."
-                fi
-                '''
-            }
-        }
-
-        stage('Build') {
-            steps {
-                echo 'Building the application...'
-                sh '''
-                if [ -f package.json ]; then
-                    npm run build
-                else
-                    echo "No build script found, skipping build stage."
-                fi
-                '''
-            }
-        }
-
-        stage('Deploy') {
-            when {
-                branch 'main' // Alleen uitvoeren op de hoofdbranch
-            }
-            steps {
-                echo 'Deploying to staging environment...'
-                sh '''
-                echo "Deploying ${APP_NAME} to ${DEPLOY_ENV} environment..."
-                # Voeg je eigen deployment-logica toe, bijvoorbeeld naar een server of cloud
+                sudo cp -r * ${DESTINATION_DIR}
+                sudo chown -R www-data:www-data ${DESTINATION_DIR}
                 '''
             }
         }
@@ -70,16 +39,13 @@ pipeline {
 
     post {
         always {
-            echo 'Pipeline finished.'
+            echo 'Pipeline completed.'
         }
         success {
             echo 'Pipeline succeeded!'
         }
         failure {
-            echo 'Pipeline failed.'
-            mail to: 'your_email@example.com',
-                subject: "Pipeline Failed: ${env.JOB_NAME}",
-                body: "Check Jenkins for details: ${env.BUILD_URL}"
+            echo 'Pipeline failed!'
         }
     }
 }

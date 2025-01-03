@@ -3,7 +3,8 @@ pipeline {
 
     environment {
         GITHUB_REPO = "stolkie78/docker-ovh"
-        DESTINATION_DIR = "/home/debian/websites"
+        SITE = "victorybeach.nl"
+        DESTINATION_DIR = "/home/debian/websites/ngnix/html/${SITE}"
     }
 
     stages {

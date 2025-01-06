@@ -247,8 +247,9 @@
                         alt="Google Maps locatie Zovoc Beach"
                         style="max-width: 250px; height: auto; border: 0px solid black; border-radius: 8px;">
                 </a>
-                <p><sub>Klik op de afbeelding voor een routebeschrijving in Google Maps.</sub></p><br><br><br>
+                <p><sub>Klik op de afbeelding voor een routebeschrijving in Google Maps.</sub></p><br><br><br><br><br><br><br>
             </div>
+            <div class="bottom-bar"><sub>Disclaimer</sub></div>
         </section>
     </div>
 
@@ -266,6 +267,23 @@
             });
         }
     </script>
+    <script>
+        function updateSectionPadding() {
+            const banner = document.querySelector('.banner');
+            const root = document.documentElement;
+
+            // Stel de CSS-variabele in op basis van de hoogte van de banner
+            if (banner) {
+                const bannerHeight = banner.offsetHeight + 'px';
+                root.style.setProperty('--banner-height', bannerHeight);
+            }
+        }
+
+        // Roep de functie aan bij het laden van de pagina en bij resizes
+        window.addEventListener('load', updateSectionPadding);
+        window.addEventListener('resize', updateSectionPadding);
+    </script>
+
 </body>
 
 </html>

@@ -21,6 +21,10 @@ body {
     /* Voorkom horizontale scrollbars */
 }
 
+:root {
+    --banner-height: 60px; /* Default waarde, overschreven door JS */
+}
+
 *,
 *:before,
 *:after {
@@ -39,7 +43,9 @@ section {
     margin: 0 auto;
     max-width: 100%;
     padding: 20px;
-    padding-top: 375px;
+    padding-top: calc(10px + var(--banner-height));
+    min-height: calc(100vh - var(--banner-height));
+    transition: padding-top 0.3s ease;
 }
 
 section>div {
@@ -84,6 +90,16 @@ section>div {
 
 .banner-icons img:hover {
     opacity: 0.8;
+}
+
+.bottom-bar {
+    color: white;
+    height: 50px;
+    background-color: black;
+    width: 100%;
+    position: relative;
+    margin-bottom: 50px;
+    /* Past aan als nodig */
 }
 
 table {

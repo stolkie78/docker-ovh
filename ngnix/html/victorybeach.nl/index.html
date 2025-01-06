@@ -261,18 +261,38 @@
 
     <img src="images/NextPageIcon.png" alt="Next Page Icon" class="next-page-icon" onclick="goToNextSection()">
 
-    <script>
-        let currentIndex = 0;
+<script>
+    let currentIndex = 0;
 
-        function goToNextSection() {
-            const sections = document.querySelectorAll('section');
-            currentIndex = (currentIndex + 1) % sections.length;
-            sections[currentIndex].scrollIntoView({
-                behavior: 'smooth',
-                block: 'start' // Zorgt ervoor dat de bovenkant van de sectie wordt weergegeven
-            });
+    function goToNextSection() {
+        const sections = document.querySelectorAll('section');
+        if (currentIndex < sections.length - 1) {
+            currentIndex++;
+        } else {
+            currentIndex = 0; // Terug naar de eerste sectie als je het einde bereikt
         }
-    </script>
+
+        // Scroll naar de volgende sectie
+        sections[currentIndex].scrollIntoView({ behavior: 'smooth' });
+
+        // Update de URL met de ID van de huidige sectie
+        const currentSectionId = sections[currentIndex].id;
+        if (currentSectionId) {
+            history.pushState(null, null, `#${currentSectionId}`);
+        }
+    }
+
+    // Zorg ervoor dat de juiste sectie wordt weergegeven als de pagina wordt geladen met een hash
+    window.addEventListener('load', () => {
+        const hash = window.location.hash;
+        if (hash) {
+            const targetSection = document.querySelector(hash);
+            if (targetSection) {
+                targetSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    });
+</script>
     <script>
         function updateSectionPadding() {
             const banner = document.querySelector('.banner');

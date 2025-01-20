@@ -1,87 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YGOS - Coming Soon</title>
-    <style>
-        /* General Styles */
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Arial', sans-serif;
-            background-color: #3c3c3c;
-            /* Dark grey */
-            color: #FFD54F;
-            /* Fresh yellow */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            text-align: center;
-            overflow: hidden;
-        }
-
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
-        }
-
-        p {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-        }
-
-        .btn {
-            background-color: #FFD54F;
-            color: #3c3c3c;
-            padding: 10px 20px;
-            font-size: 1rem;
-            text-transform: uppercase;
-            font-weight: bold;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        .btn:hover {
-            background-color: #3c3c3c;
-            color: #FFD54F;
-            border: 1px solid #FFD54F;
-        }
-
-        footer {
-            position: absolute;
-            bottom: 20px;
-            width: 100%;
-            text-align: center;
-            font-size: 0.9rem;
-            color: #bdbdbd;
-            /* Lighter grey for footer text */
-        }
-
-        footer a {
-            color: #FFD54F;
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <link rel="stylesheet" href="styles/style.css">
+    <title>ViBeS - Beachvolleybal Community</title>
 </head>
-
 <body>
-    <div>
-        <h1>YGOS</h1>
-        <p>We're working hard to bring something amazing.<br>Stay tuned!</p>
-        <button class="btn">Notify Me</button>
+    <div class="banner">
+        <img src="images/banner.png" alt="Banner" class="logo">
+        <div class="banner-icons">
+            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer"><img src="images/FBIcon.png" alt="Find us on Facebook"></a>
+            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer"><img src="images/InstaIcon.png" alt="Find us on Insta"></a>
+            <img src="images/WAIcon.png" alt="Contact us on WhatsApp">
+            <a href="mailto:vdummy"> <img src="images/MailIcon.png" alt="Contact us using Mail"></a>
+        </div>
     </div>
-    <footer>
-        &copy; 2024 YGOS | <a href="mailto:info@ygos.com">info@ygos.com</a>
-    </footer>
-</body>
+    <div class="container">
+        
+        <section id="section 1">
+            <div>
+                <div class="section-header">Section 1</div>
+                <p>
+                    Text
+                </p>
+            </div>
+            <div class="section-end"></div>
+        </section>
+        
+        <section id="section 2">
+        <div>
+        <div class="section-header">Section 2</div>
+            <p>
+                Text            
+            </p>
+        <div class="section-end"></div>
+        </section>
 
+<script>
+    let currentIndex = 0;
+
+    function goToNextSection() {
+        const sections = document.querySelectorAll('section');
+        if (currentIndex < sections.length - 1) {
+            currentIndex++;
+        } else {
+            currentIndex = 0; // Terug naar de eerste sectie als je het einde bereikt
+        }
+
+        // Scroll naar de volgende sectie
+        sections[currentIndex].scrollIntoView({ behavior: 'smooth' });
+
+        // Update de URL met de ID van de huidige sectie
+        const currentSectionId = sections[currentIndex].id;
+        if (currentSectionId) {
+            history.pushState(null, null, `#${currentSectionId}`);
+        }
+    }
+
+    // Zorg ervoor dat de juiste sectie wordt weergegeven als de pagina wordt geladen met een hash
+    window.addEventListener('load', () => {
+        const hash = window.location.hash;
+        if (hash) {
+            const targetSection = document.querySelector(hash);
+            if (targetSection) {
+                targetSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    });
+</script>
+    <script>
+        function updateSectionPadding() {
+            const banner = document.querySelector('.banner');
+            const root = document.documentElement;
+
+            // Stel de CSS-variabele in op basis van de hoogte van de banner
+            if (banner) {
+                const bannerHeight = banner.offsetHeight + 'px';
+                root.style.setProperty('--banner-height', bannerHeight);
+            }
+        }
+
+        // Roep de functie aan bij het laden van de pagina en bij resizes
+        window.addEventListener('load', updateSectionPadding);
+        window.addEventListener('resize', updateSectionPadding);
+    </script>
+
+</body>
 </html>
